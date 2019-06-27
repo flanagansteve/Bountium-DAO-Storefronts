@@ -129,7 +129,7 @@ var StoreFront = React.createClass({
       );
     return React.createElement("div", {},
       storeHeader,
-      React.createElement("div", {className:"container row"},
+      React.createElement("div", {className:""},
         React.createElement("div", {className:"col-12"},
           React.createElement("div", {className:"catalogue-feed-customer"},
             React.createElement("h3", null, "Products Available"),
