@@ -22,7 +22,8 @@ var StoreFront = React.createClass({
       catalogue : [],
       bizName : "anonymous business",
       productsStillToFetch : productsStillToFetch,
-      noMore : false
+      noMore : false,
+      selectedProduct : -1
     }
   },
 
@@ -32,6 +33,14 @@ var StoreFront = React.createClass({
       if (res!="")
         this.setState({bizName : res});
     });
+  },
+
+  renderProduct : function(productID) {
+    this.setState({selectedProduct : productID})
+  },
+
+  unrenderProduct : function() {
+    this.setState({selectedProduct : -1})
   },
 
   getProduct : function(productNum) {
@@ -75,8 +84,8 @@ var StoreFront = React.createClass({
   },
 
   mapProducts : function(product, key) {
-    return React.createElement(Product,
-      {product:product, key:key, autobiz:this.props.autobiz, id:key}
+    return React.createElement(ProductCard,
+      {product:product, key:key, autobiz:this.props.autobiz, id:key, renderProduct:this.renderProduct}
     );
   },
 
@@ -110,34 +119,41 @@ var StoreFront = React.createClass({
   },
 
   render : function() {
-    var storeHeader = React.createElement("div", {className:"store-header"},
-      React.createElement("h3", null, "Welcome to the store of: " + this.state.bizName)
+    var headerText = React.createElement("h3", {onClick:this.undisplayBounty}, "Welcome to a ", React.createElement("a", {href:"#"}, "Custom Market"));
+    var storeHeader = React.createElement("div", {className:"row"},
+      React.createElement("h3", {onClick:this.unrenderProduct, className:"col-9"}, "Welcome to the store of: ", React.createElement("a", {href:"#"}, this.state.bizName)),
+      React.createElement("button", {onClick:this.unrenderProduct, className:"btn btn-info col-2"}, "Back")
     );
     // TODO have a link that renders the: React.createElement(OrderChecker, {})
     if (this.state.catalogue.length == 0)
-      return React.createElement("div", {},
+      return React.createElement("div", {className:"container-fluid"},
         storeHeader,
         React.createElement("div", {className:"container row"},
           React.createElement("div", {className:"col-12"},
-            React.createElement("div", {className:"catalogue-feed-customer"},
-              React.createElement("h3", null, "Products Available"),
+            React.createElement("div", {className:"mt-3"},
               (!this.state.noMore && React.createElement("img", {className:"img-sm", src:"/img/loading.gif"})),
               (this.state.noMore && React.createElement("p", {}, "This business has no products available"))
             )
           )
         )
       );
-    return React.createElement("div", {},
-      storeHeader,
-      React.createElement("div", {className:""},
-        React.createElement("div", {className:"col-12"},
-          React.createElement("div", {className:"catalogue-feed-customer"},
-            React.createElement("h3", null, "Products Available"),
-            React.createElement("div", {className:"row"},
-              this.state.catalogue.map(this.mapProducts)
-            )
+    if (this.state.selectedProduct >= 0)
+      return React.createElement("div", {className:"container-fluid"},
+        storeHeader,
+        React.createElement("div", {className:"mt-3"},
+          React.createElement(ProductDisplay,
+            {
+              product:this.state.catalogue[this.state.selectedProduct],
+              autobiz:this.props.autobiz,
+              id:this.state.selectedProduct
+            }
           )
         )
+      );
+    return React.createElement("div", {className:"container-fluid"},
+      storeHeader,
+      React.createElement("div", {className:"col-12 mt-3 card-columns"},
+        this.state.catalogue.map(this.mapProducts)
       )
     );
   }
