@@ -4,6 +4,7 @@ autobiz = null;
 userAccount = null;
 
 function renderStore(autobizAddr) {
+  // presuming its a valid autobiz addr... TODO
   autobiz = autobizABI.at(autobizAddr);
   document.getElementById("dashboard").innerHTML = "";
   ReactDOM.render(
@@ -16,10 +17,7 @@ function updateInterface() {
   document.getElementById("workflow-container").innerHTML = "";
   var addr = location.search;
   if (addr.includes("0x")) {
-    autobizAddr = addr.substring(addr.indexOf("0x"));
-    // presuming its a valid autobiz addr... TODO
-    autobiz = autobizABI.at(autobizAddr);
-    renderStore();
+    renderStore(addr.substring(addr.indexOf("0x")));
   } else {
     ReactDOM.render(
       React.createElement(Welcome, {renderStore:renderStore}, userAccount),

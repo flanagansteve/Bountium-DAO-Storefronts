@@ -7,7 +7,7 @@ Sets:
 - background colour
 - default input width as 50% of parent div
 */
-
+/* NOTE removing while converting to _B_ootstrap
 body {
   font-family: arial;
   background-color: #eee;
@@ -28,6 +28,7 @@ Sets:
 - styles links, esp. with hovering
 - limits image size (relevant to logo)
 */
+/* NOTE removing while converting to _B_ootstrap
 .header ul {
   position: fixed;
   top: 0;
@@ -71,6 +72,7 @@ Sets:
 - Slight padding from header to give breathing room
 - link styling
 */
+/* NOTE removing while converting to _B_ootstrap
 
 #dashboard {
   margin-top:50px;
@@ -89,12 +91,12 @@ Sets:
 - float to right (as we want it to be in-line with the menu title)
 - colour, border (no roundness), and size
 */
+/* NOTE removing while converting to _B_ootstrap
 .toggle-expand-collapse {
   width:18%;
   padding:1%;
   float:right;
   font-size: 80%;
-  /*margin-top: -4.5%;*/
   margin-right:5%;
   background-color: #337ab7;
   border: 1px solid #337ab7;
@@ -114,6 +116,7 @@ Sets:
 - slightly different text colouring, background colouring, and shadows
 TODO also style the tables, texts, buttons
 */
+/* NOTE removing while converting to _B_ootstrap
 .popup {
   width:75%;
   margin-left:15%;
@@ -148,6 +151,7 @@ Sets:
 - override input width to be 3/4 of the whole div
 - TODO style inputs + buttons
 */
+/* NOTE removing while converting to _B_ootstrap
 .bounty-submission {
   float:right;
   width:50%;
@@ -171,6 +175,7 @@ Sets:
 - max height of the whole div
 - the max width of the title welcome msg to not overflow into the order checker
 */
+/* NOTE removing while converting to _B_ootstrap
 .store-header {
   height: 10%;
 }
@@ -187,6 +192,7 @@ Sets:
 - float to right
 - margin top to align with the welcome header msg
 */
+/* NOTE removing while converting to _B_ootstrap
 .order-checker {
   float: right;
   margin-top: -80px;
@@ -197,8 +203,9 @@ Sets:
 Sets:
 - TODO
 */
+/* NOTE removing while converting to _B_ootstrap
 .catalogue-feed-customer {
-  
+
 }
 
 /*
@@ -215,6 +222,7 @@ Sets:
 
 /* For the following classes, they take up half the screen width and need to
    increase input width as a result */
+   /* NOTE removing while converting to _B_ootstrap
 .bounty-submission input[type="text"], .bounty-lookup-form {
  width: 99%;
 }

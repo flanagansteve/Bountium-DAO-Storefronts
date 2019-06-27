@@ -1,22 +1,15 @@
 var Header = React.createClass({
 
   render : function() {
-    // TODO i'm sure theres a better way to do this
-    if (location.href.includes("/biz") || location.href.includes("/supplier") || location.href.includes("/shop") || location.href.includes("/post") || location.href.includes("/tshirt"))
-      return React.createElement("div", {className:"header"},
-        React.createElement("ul", {},
-          React.createElement("a", {href:"../"}, React.createElement("img", {src:"../img/logo.png"})),
-          React.createElement("li", {}, React.createElement("a", {href:"../biz/"}, "Manage Business")),
-          React.createElement("li", {}, React.createElement("a", {href:"../shop/"}, "Shop")),
-          React.createElement("li", {}, React.createElement("a", {href:"../supplier/"}, "Fulfill Supply Requests"))
-        )
-      );
-      return React.createElement("div", {className:"header"},
-        React.createElement("ul", {},
-          React.createElement("a", {href:"./"}, React.createElement("img", {src:"./img/logo.png"})),
-          React.createElement("li", {}, React.createElement("a", {href:"./biz/"}, "Manage Business")),
-          React.createElement("li", {}, React.createElement("a", {href:"./shop/"}, "Shop")),
-          React.createElement("li", {}, React.createElement("a", {href:"./supplier/"}, "Fulfill Supply Requests"))
+    return React.createElement("header", {className:"navbar navbar-expand"},
+        React.createElement("a", {href:"/", className:"navbar-brand mr-0 mr-md-2"},
+          "Home"
+        ),
+        React.createElement("div", {className:"col-10 mx-auto"},
+          React.createElement("ul", {className:"nav navbar-collapse"},
+            React.createElement("li", {className:"nav-item ml-auto"}, React.createElement("a", {href:"/discover", className:"nav-link"}, "Search for Products")),
+            React.createElement("li", {className:"nav-item"}, "Built on ", React.createElement("a", {href:"http://bountium.org"}, "Bountium"))
+          )
         )
       );
   }
