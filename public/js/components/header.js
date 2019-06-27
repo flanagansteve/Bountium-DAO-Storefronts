@@ -7,7 +7,7 @@ var Header = React.createClass({
         ),
         React.createElement("div", {className:"col-10 mx-auto"},
           React.createElement("ul", {className:"nav navbar-collapse"},
-            React.createElement("li", {className:"nav-item ml-auto"}, React.createElement("a", {href:"/discover", className:"nav-link"}, "Search for Products")),
+            React.createElement("li", {className:"nav-item ml-auto"}, React.createElement("a", {href:"/", className:"nav-link"}, "Search for Products")),
             React.createElement("li", {className:"nav-item"}, "Built on ", React.createElement("a", {href:"http://bountium.org"}, "Bountium"))
           )
         )
