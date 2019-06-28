@@ -2,7 +2,7 @@ var Header = React.createClass({
 
   render : function() {
     return React.createElement("header", {className:"navbar navbar-expand"},
-        React.createElement("a", {href:"/", className:"navbar-brand mr-0 mr-md-2"},
+        React.createElement("a", {href:"./", className:"navbar-brand mr-0 mr-md-2"},
           "Home"
         ),
         React.createElement("div", {className:"col-10 mx-auto"},
