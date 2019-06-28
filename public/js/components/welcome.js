@@ -8,7 +8,7 @@ var Welcome = React.createClass({
         React.createElement("a", {href:"./?0x4dba8f8581d8fddfccb227db4845129c2bcec74f"}, "0x4dba8f8581d8fddfccb227db4845129c2bcec74f")
       ),
       React.createElement("p", {}, "Example on the Ropsten network at: ",
-        React.createElement("a", {href:"./?0x4dba8f8581d8fddfccb227db4845129c2bcec74f"}, "0xefe00cbd5bf51bf8f3cf5804650fd8e3fd5e9ec2")
+        React.createElement("a", {href:"./?0xefe00cbd5bf51bf8f3cf5804650fd8e3fd5e9ec2"}, "0xefe00cbd5bf51bf8f3cf5804650fd8e3fd5e9ec2")
       ),
       React.createElement("input", {type:"text", className:"form-control", id:"store-addr-input", placeholder:"Desired business's address"}),
       React.createElement("button",
