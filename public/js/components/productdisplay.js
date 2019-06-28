@@ -20,6 +20,11 @@ var ProductDisplay = React.createClass({
     );
   },
 
+  // options are added in this format in remix:
+  // [product index], "{\"option_name\":[\"option1\",\"option2\",\"etc\"]}"
+  // ie: 0, "{\"sizes\":[\"small\",\"medium\",\"large\"]}"
+  // we'll use JSON.stringify in the DAO mgr to make this user friendly in time,
+  // but leaving this here now as you test
   optionSetRadioForms : function(key, keynum) {
     return React.createElement("div", {key:keynum},
       React.createElement("h5", {}, "Select your " + key),
@@ -37,7 +42,7 @@ var ProductDisplay = React.createClass({
       React.createElement("div", {className:"col-md-8 border mt-2 mt-md-0 pt-2"},
         React.createElement("h5", {}, this.props.product.name),
         React.createElement("p", {}, this.props.product.description),
-        React.createElement("p", {}, "Price: " + this.props.product.price + " wei"),
+        React.createElement("p", {}, "Price: " + web3.fromWei(this.props.product.price, "ether") + " ETH"),
         React.createElement("div", {},
           Object.keys(JSON.parse(this.props.product.orderOptions)).map(this.optionSetRadioForms)
         ),
