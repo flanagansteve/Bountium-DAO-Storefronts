@@ -151,7 +151,7 @@ var StoreFront = React.createClass({
           )
         )
       );
-    return React.createElement("div", {className:"container-fluid"},
+    return React.createElement("div", {className:"container-fluid mb-2"},
       storeHeader,
       React.createElement("div", {className:"col-12 mt-3 card-columns"},
         this.state.catalogue.map(this.mapProducts)

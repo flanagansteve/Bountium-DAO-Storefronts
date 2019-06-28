@@ -26,7 +26,8 @@ var ProductCard = React.createClass({
           // TODO can we make the product name appear as a link w/o really being a link?
           React.createElement("h5", {onClick:this.renderProduct}, React.createElement("p", {className:"card-link"}, this.props.product.name)),
           React.createElement("p", {}, this.props.product.description),
-          React.createElement("p", {}, "Price: " + web3.fromWei(this.props.product.price, "ether") + " ETH")
+          React.createElement("p", {}, "Price: " + web3.fromWei(this.props.product.price, "ether") + " ETH"),
+          React.createElement("button", {className:"btn btn-info mb-1", onClick:this.renderProduct}, "Order")
         )
       )
     );
