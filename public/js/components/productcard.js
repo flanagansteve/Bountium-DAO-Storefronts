@@ -23,7 +23,8 @@ var ProductCard = React.createClass({
       React.createElement("div", {className:"card d-flex", onClick:this.renderProduct},
         React.createElement("img", {className:"card-img-top mx-auto d-block", alt:this.props.product.name, src:this.props.product.imageUrl}),
         React.createElement("div", {className:"container"},
-          React.createElement("h5", {onClick:this.renderProduct}, React.createElement("a", {href:"#"}, this.props.product.name)),
+          // TODO can we make the product name appear as a link w/o really being a link?
+          React.createElement("h5", {onClick:this.renderProduct}, React.createElement("p", {className:"card-link"}, this.props.product.name)),
           React.createElement("p", {}, this.props.product.description),
           React.createElement("p", {}, "Price: " + this.props.product.price + " wei"),
         )
