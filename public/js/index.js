@@ -27,7 +27,7 @@ function updateInterface() {
 
 window.addEventListener('load', async () => {
 
-  document.getElementById("dashboard").innerHTML = "<h1>Bountium is a dapp built on the Ethereum blockchain. You need an Ethereum wallet to use it - we recommend metamask, which you can install <a href = \'https://metamask.io\'>here</a></h1>";
+  document.getElementById("dashboard").innerHTML = "<div class=\"container\"><h3>Bountium is a dapp built on the Ethereum blockchain. You need an Ethereum wallet to use it - we recommend metamask, which you can install <a href = \'https://metamask.io\'>here</a></h3></div>";
 
   // check for metamask
   if(typeof web3 !== 'undefined') {
