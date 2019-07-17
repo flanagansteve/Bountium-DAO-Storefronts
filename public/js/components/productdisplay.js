@@ -2,9 +2,10 @@ var ProductDisplay = React.createClass({
 
   order : function(productID) {
     var customOptions = {};
-    Object.keys(JSON.parse(this.props.product.orderOptions)).map((key) =>
-      customOptions[key] = document.getElementById(key).value
-    )
+    if (this.props.product.orderOptions.length > 0)
+      Object.keys(JSON.parse(this.props.product.orderOptions)).map((key) =>
+        customOptions[key] = document.getElementById(key).value
+      )
     this.props.autobiz.order(productID,
       JSON.stringify(customOptions),
       document.getElementById("customer-info-input-" + productID).value,
