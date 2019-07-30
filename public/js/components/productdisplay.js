@@ -2,13 +2,14 @@ var ProductDisplay = React.createClass({
 
   order : function(productID) {
     var customOptions = {};
-    if (this.props.product.orderOptions.length > 0)
+    if ((this.props.product.orderOptions !== undefined && this.props.product.orderOptions.length > 0))
       Object.keys(JSON.parse(this.props.product.orderOptions)).map((key) =>
         customOptions[key] = document.getElementById(key).value
       )
+    // Add delivery info:
+    customOptions["Delivery Info"] = document.getElementById("customer-info-input-" + productID).value;
     this.props.autobiz.order(productID,
       JSON.stringify(customOptions),
-      document.getElementById("customer-info-input-" + productID).value,
       {from:userAccount, value:this.props.product.price},
       function(err, res) {
         if (err) {
@@ -44,8 +45,8 @@ var ProductDisplay = React.createClass({
         React.createElement("h5", {}, this.props.product.name),
         React.createElement("p", {}, this.props.product.description),
         React.createElement("p", {}, "Price: " + web3.fromWei(this.props.product.price, "ether") + " ETH"),
-        (this.props.product.orderOptions.length > 0 && React.createElement("div", {},
-          Object.keys(JSON.parse(this.props.product.orderOptions)).map(this.optionSetRadioForms)
+        ((this.props.product.orderOptions !== undefined && this.props.product.orderOptions.length > 0)
+          && React.createElement("div", {}, Object.keys(JSON.parse(this.props.product.orderOptions)).map(this.optionSetRadioForms)
         )),
         React.createElement("label", {for:"customer-info-input-" + this.props.id}, "Input your delivery information"),
         React.createElement("br", {}),

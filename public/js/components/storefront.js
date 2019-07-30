@@ -63,8 +63,7 @@ var StoreFront = React.createClass({
               forSale : res[3],
               price : res[4],
               ordersReceived : res[5],
-              supplyChainLength : res[6],
-              orderOptions : res[7]
+              orderOptions : res[6]
             });
             this.setState({catalogue:catalogue});
           }
