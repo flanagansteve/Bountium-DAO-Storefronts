@@ -1,0 +1,25 @@
+{
+  "name": "bountium_dev",
+  "version": "0.1.0",
+  "description": "### Run Mongodb daemon at 27017 ``` mongodb URI can be changed in config/index.js ```",
+  "main": ".eslintrc.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-react": "^7.14.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mraybman/bountium_dev.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/mraybman/bountium_dev/issues"
+  },
+  "homepage": "https://github.com/mraybman/bountium_dev#readme"
+}
