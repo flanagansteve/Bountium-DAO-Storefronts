@@ -30,9 +30,15 @@ var StoreFront = React.createClass( {
   },
 
   componentDidMount : async function() {
-    this.props.autobiz.biz_name((err, response) => {
+    if(window.metamaskAvailable) {
+      this.props.autobiz.biz_name((err, response) => {
         this.setState({bizName: response})
-    })
+      })
+    } else {
+      const bizName = await axios.get(`${backendURL}/api/bizName/${this.props.autobizAddr}`);
+      this.setState({bizName: bizName.data.data})
+    }
+    
     this.fetchProducts();
     this.props.autobiz.biz_name( ( err, res ) => {
       if ( res!="" )
@@ -91,7 +97,7 @@ var StoreFront = React.createClass( {
           forSale: res.data.data[0].forSale,
           price: res.data.data[0].price,
           ordersReceived: res.data.data[0].orderReceived,
-          orderOptions: res.data.data[0].supplyChainLength
+          orderOptions: res.data.data[0].orderOptions
         } );
         this.setState( { catalogue: catalogue } );
     } catch( err ) {

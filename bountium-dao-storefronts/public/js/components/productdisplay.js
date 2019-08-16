@@ -53,7 +53,7 @@ var ProductDisplay = React.createClass( {
     const price = web3.fromWei( this.props.product.price, "ether" );
     const usdPrice = ( this.props.ethPrice * price ).toFixed( 2 );
 
-    const sizes = [ 'Small', 'Medium', 'Large' ];
+    const sizes = JSON.parse(this.props.product.orderOptions).sizes;
 
     const sizeSelectors = sizes.map( function generateSizeSelectors( size ) {
       const sizeAbbreviation = size.slice( 0,1 );
@@ -105,14 +105,6 @@ var ProductDisplay = React.createClass( {
               ")"
             ) // dd
           ), // dl
-
-          ( // Order Options:
-            ( this.props.product.orderOptions !== undefined && this.props.product.orderOptions.length > 0 )
-            && React.createElement( "div", {},
-              Object.keys( JSON.parse( this.props.product.orderOptions ) )
-                .map( this.optionSetRadioForms )
-            ) // createElement
-          ),
 
           React.createElement( "div", {}, 
             /*

@@ -57,3 +57,30 @@ exports.getProductByIdAndStore = async (req, res) => {
         })
     }
 }
+
+exports.getBizName = async (req, res) => {
+    const store = req.params.store;
+
+    try {
+        const bizName = await Product.findOne({storeAddress: store});
+        if(bizName) {
+            return res.status(200).json({
+                msg: "Success",
+                data: bizName.bizName
+            })
+        }
+
+        return res.status(404).json({
+            msg: "NOT FOUND",
+            data: null
+        })
+    } catch(err) {
+        console.log("Error: ", err);
+        return res.status(500).json({
+            msg: "Server side error occured",
+            data: null
+        })
+    }
+
+    
+}

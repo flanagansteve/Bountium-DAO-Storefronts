@@ -7,6 +7,10 @@ const ProductSchema = new Schema({
         type: Number,
         required: true,
     },
+    bizName: {
+        type: String,
+        required: true
+    },
     price: {
         type: Number,
         required: true
@@ -31,8 +35,8 @@ const ProductSchema = new Schema({
         type: Number,
         required: true
     },
-    supplyChainLength: {
-        type: Number,
+    orderOptions: {
+        type: String,
         required: true
     },
     storeAddress: {
