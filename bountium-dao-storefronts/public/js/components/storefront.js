@@ -29,7 +29,10 @@ var StoreFront = React.createClass( {
     }
   },
 
-  componentDidMount: async function() {
+  componentDidMount : async function() {
+    this.props.autobiz.biz_name((err, response) => {
+        this.setState({bizName: response})
+    })
     this.fetchProducts();
     this.props.autobiz.biz_name( ( err, res ) => {
       if ( res!="" )
@@ -159,7 +162,7 @@ var StoreFront = React.createClass( {
             onClick: this.unrenderProduct,
             href: "#"
           },
-            "All Stores"
+            "All Products"
           ),
           React.createElement( "span", { className: "d-inline-block align-middle mx-1" },
             " ▸ "
@@ -171,12 +174,10 @@ var StoreFront = React.createClass( {
       ),
     );
 
-    var banner = React.createElement( "section", { className: "jumbotron jumbotron-fluid text-center mt-1 mb-0" },
-      React.createElement( "div", { className: "container" },
-        React.createElement( "h2", { className: "display-3" }, "Summer Collection 2019" ),
-          React.createElement( "p", { className: "lead" }, "A Good Looking, Comfortable Traditional Collection" )
-      )
-    );
+    var banner = React.createElement("section", {className: "jumbotron jumbotron-fluid text-center", style: {marginTop: "20px"}},
+    React.createElement("div", {className:"container"},
+      React.createElement("h2", {className: "display-3"}, `${this.state.bizName} Collection 2019`),
+        React.createElement("p", {className:"lead"}, "A Good Looking, Comfortable Traditional Collection")));
 
     // TODO have a link that renders the: React.createElement(OrderChecker, {})
     if ( this.state.catalogue.length == 0 )
