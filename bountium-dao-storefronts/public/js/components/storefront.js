@@ -4,7 +4,7 @@
 
 // A constant for the amount of queries we want to do from the contract at a time
 const productsPerFetch = 10;
-const backendURL = "https://limitless-refuge-28555.herokuapp.com"
+const backendURL = "http://localhost:3434"
 
 var StoreFront = React.createClass( {
 
