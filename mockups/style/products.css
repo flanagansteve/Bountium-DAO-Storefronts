@@ -1,0 +1,40 @@
+.card-columns {
+  column-count: 2
+}
+
+@media (min-width: 992px) {
+
+  /* lg */
+  .card-columns {
+    column-count: 4;
+  }
+}
+
+.navbar-brand {
+  font-weight: normal;
+}
+
+.card,
+.card:hover,
+.card:focus {
+  color: inherit;
+}
+
+.card {
+  padding: 1.5rem;
+  background-color: #f6f6f6;
+  position: relative;
+}
+
+.card:hover,
+.card:focus {
+  text-decoration: none;
+}
+
+.bountium-sale {
+  position: absolute;
+  /* width: 100%; */
+  top: .75rem;
+  left: .75rem;
+  font-size: .9rem;
+}
