@@ -16,3 +16,5 @@ publish:
   stage: deploy
   script:
     - npm run dev
+  only:
+    - master
