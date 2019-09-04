@@ -1,10 +1,9 @@
 pages:
-  image: docker:stable
+  image: node:6
   stage: deploy
   before_script:
-  - apt-get install -y npm
-  script:
   - npm install
+  script:
   - npm run dev
   artifacts:
     paths:
