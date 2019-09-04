@@ -2,11 +2,12 @@ pages:
   image: node:6
   stage: deploy
   before_script:
+  - cd bountium-dao-storefronts
   - npm install
   script:
   - npm run dev
   artifacts:
     paths:
-    - bountium-dao-storefronts/public
+    - public
   only:
   - master
