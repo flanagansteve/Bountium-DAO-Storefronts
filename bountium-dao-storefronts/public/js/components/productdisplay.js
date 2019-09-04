@@ -2,7 +2,8 @@ var ProductDisplay = React.createClass( {
 
   getInitialState: function() {
     return {
-      orderButtonMessage: ""
+      orderButtonMessage: "",
+      orderField: ""
     }
   }, 
   componentDidMount: function(){
@@ -49,29 +50,40 @@ var ProductDisplay = React.createClass( {
     )
   },
 
-  render: function() {
-    const price = web3.fromWei( this.props.product.price, "ether" );
-    const usdPrice = ( this.props.ethPrice * price ).toFixed( 2 );
+  getOptions: function() {
+    const orderOptions = JSON.parse(this.props.product.orderOptions)
+    const orderField = Object.keys(orderOptions)[0];
 
-    const sizes = JSON.parse(this.props.product.orderOptions).sizes;
+    const options = JSON.parse(this.props.product.orderOptions)[orderField];
 
-    const sizeSelectors = sizes.map( function generateSizeSelectors( size ) {
-      const sizeAbbreviation = size.slice( 0,1 );
-      const sizeId = `size-${sizeAbbreviation.toLowerCase()}`;
+    const optionSelectors = options.map( function generateOptionSelectors( option ) {
+      const optionAbbreviation = option.slice( 0,1 );
+      const optionId = `option-${optionAbbreviation.toLowerCase()}`;
 
       return React.createElement( "div", { className: "custom-control custom-radio custom-control-inline" },
         React.createElement( "input", {
-          id: sizeId,
+          id: optionId,
           className: "custom-control-input",
-          name: "size",
+          name: "option",
           type: "radio",
-          value: size
+          value: option
         } ),
-        React.createElement( "label", { className: "custom-control-label", htmlFor: sizeId },
-          size
+        React.createElement( "label", { className: "custom-control-label", htmlFor: optionId },
+          option
         )
       )
     } );
+
+    const orderFieldName = orderField.charAt(0).toUpperCase() + orderField.slice(1);
+    
+    return React.createElement( "fieldset", { className: "form-group" },
+      React.createElement( "legend", { className: "col-form-label" }, orderFieldName ),
+      optionSelectors
+    )
+  },
+  render: function() {
+    const price = web3.fromWei( this.props.product.price, "ether" );
+    const usdPrice = ( this.props.ethPrice * price ).toFixed( 2 );
 
     return (
       // Wrapper:
@@ -117,10 +129,7 @@ var ProductDisplay = React.createClass( {
               <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
             </div>
             */
-            React.createElement( "fieldset", { className: "form-group" },
-              React.createElement( "legend", { className: "col-form-label" }, "Size" ),
-              sizeSelectors
-            ),
+            this.getOptions(),
 
             React.createElement( "div", { className: "form-group" },
               React.createElement( "label", {
