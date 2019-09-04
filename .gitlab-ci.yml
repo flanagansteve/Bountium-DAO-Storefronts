@@ -4,6 +4,7 @@ image: node:6
 
 before_script:
   - npm install
+  - node script/updateDB.js
 
 # This folder is cached between builds
 cache:
