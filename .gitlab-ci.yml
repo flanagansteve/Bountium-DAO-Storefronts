@@ -5,7 +5,7 @@ pages:
   - cd bountium-dao-storefronts
   - npm install
   script:
-  - npm run dev
+  - npm run dev &&
   artifacts:
     paths:
     - public
