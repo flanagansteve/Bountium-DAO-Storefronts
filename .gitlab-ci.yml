@@ -1,12 +1,17 @@
-image: alpine:latest
+# Official framework image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/node/tags/
+image: node:6
 
-pages:
+before_script:
+  - npm install
+
+# This folder is cached between builds
+cache:
+  paths:
+    - bountium-dao-storefronts/node_modules/
+
+# Publish tagged versions to npm
+publish:
   stage: deploy
   script:
-  - echo 'Nothing to do...'
-  artifacts:
-    paths:
-    - bountium-dao-storefronts/public
-  only:
-  - master
-
+    - npm run dev
