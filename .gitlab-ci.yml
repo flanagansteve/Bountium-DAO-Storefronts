@@ -2,6 +2,8 @@ image: alpine:latest
 
 pages:
   stage: deploy
+  before_script:
+  - apt-get install -y npm
   script:
   - npm install
   - npm run dev
