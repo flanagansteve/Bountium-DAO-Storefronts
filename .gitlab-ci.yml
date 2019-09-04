@@ -8,6 +8,6 @@ pages:
   - npm run dev &
   artifacts:
     paths:
-    - public
+    - bountium-dao-storefronts/public
   only:
   - master
