@@ -1,6 +1,5 @@
-image: docker:stable
-
 pages:
+  image: docker:stable
   stage: deploy
   before_script:
   - apt-get install -y npm
