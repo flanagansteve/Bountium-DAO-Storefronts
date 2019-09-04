@@ -29,14 +29,14 @@ var StoreFront = React.createClass( {
     }
   },
 
-  componentDidMount : async function() {
-    if(window.metamaskAvailable) {
-      this.props.autobiz.biz_name((err, response) => {
-        this.setState({bizName: response})
-      })
+  componentDidMount: async function() {
+    if( window.metamaskAvailable ) {
+      this.props.autobiz.biz_name( ( err, response ) => {
+        this.setState( { bizName: response } )
+      } )
     } else {
-      const bizName = await axios.get(`${backendURL}/api/bizName/${this.props.autobizAddr}`);
-      this.setState({bizName: bizName.data.data})
+      const bizName = await axios.get( `${backendURL}/api/bizName/${this.props.autobizAddr}` );
+      this.setState( { bizName: bizName.data.data } )
     }
     
     this.fetchProducts();
@@ -180,10 +180,10 @@ var StoreFront = React.createClass( {
       ),
     );
 
-    var banner = React.createElement("section", {className: "jumbotron jumbotron-fluid text-center", style: {marginTop: "20px"}},
-    React.createElement("div", {className:"container"},
-      React.createElement("h2", {className: "display-3"}, `${this.state.bizName} Collection 2019`),
-        React.createElement("p", {className:"lead"}, "A Good Looking, Comfortable Traditional Collection")));
+    var banner = React.createElement( "section", { className: "jumbotron jumbotron-fluid text-center", style: { marginTop: "20px" } },
+    React.createElement( "div", { className: "container" },
+      React.createElement( "h2", { className: "display-3" }, `${this.state.bizName} Collection 2019` ),
+        React.createElement( "p", { className: "lead" }, "A Good Looking, Comfortable Traditional Collection" ) ) );
 
     // TODO have a link that renders the: React.createElement(OrderChecker, {})
     if ( this.state.catalogue.length == 0 )
